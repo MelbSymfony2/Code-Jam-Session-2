@@ -3,7 +3,7 @@
  * Copyright Cameron Manderson (c) 2011 All rights reserved.
  * Date: 3/10/11
  */
-namespace CodeJamTestSuite\DataFixture\ORM;
+namespace CodeJamTestSuite\DataFixtures\ORM;
 /**
  *
  * @author camm (camm@flintinteractive.com.au)

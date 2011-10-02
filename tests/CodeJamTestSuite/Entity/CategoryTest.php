@@ -102,7 +102,7 @@ class CategoryTest extends EntityTestCase
 
     public function testNestedSet()
     {
-        $this->loadFixture('CodeJamTestSuite\DataFixture\ORM\ProductCatalogueFixture');
+        $this->loadFixture('CodeJamTestSuite\DataFixtures\ORM\ProductCatalogueFixture');
 
         $em = $this->getEntityManager();
 
@@ -115,7 +115,7 @@ class CategoryTest extends EntityTestCase
 
     public function testRetrieveAllProductsByCategory()
     {
-        $this->loadFixture('CodeJamTestSuite\DataFixture\ORM\ProductCatalogueFixture');
+        $this->loadFixture('CodeJamTestSuite\DataFixtures\ORM\ProductCatalogueFixture');
 
         $em = $this->getEntityManager();
 
