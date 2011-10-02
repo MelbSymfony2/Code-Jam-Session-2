@@ -15,6 +15,8 @@ class Category
 
     protected $name;
 
+    protected $description;
+
     protected $products;
 
     protected $parent;
@@ -58,5 +60,15 @@ class Category
     public function getParent()
     {
         return $this->parent;
+    }
+
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    public function getDescription()
+    {
+        return $this->description;
     }
 }
