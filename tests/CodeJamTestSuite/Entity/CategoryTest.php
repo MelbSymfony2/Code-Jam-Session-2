@@ -4,7 +4,7 @@
  * Date: 3/10/11
  */
 namespace CodeJamTestSuite\Entity;
-use MelbSymfony2\Entity\Category;
+use MelbSymfony2\Entity\Product;
 use MelbSymfony2\Entity\Category;
 /**
  *
