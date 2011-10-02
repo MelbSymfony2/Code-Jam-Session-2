@@ -3,7 +3,7 @@
  * Copyright Cameron Manderson (c) 2011 All rights reserved.
  * Date: 3/10/11
  */
-
+namespace CodeJamTestSuite\DataFixture\ORM;
 /**
  *
  * @author camm (camm@flintinteractive.com.au)
@@ -12,11 +12,9 @@ class ProductCatalogueFixture
 {
     public function load($em)
     {
-
         $categoryA = new Category();
         $categoryA->setName('Category A');
         $categoryA->setDescription('Lorem ipsum');
-        $em = $this->getEntityManager();
         $em->persist($categoryA);
         $em->flush();
 
@@ -68,5 +66,6 @@ class ProductCatalogueFixture
         $em->persist($productD);
 
 
+        $em->flush();
     }
 }
