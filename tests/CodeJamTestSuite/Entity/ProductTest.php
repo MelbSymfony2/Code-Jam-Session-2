@@ -11,7 +11,7 @@ use MelbSymfony2\Entity\Category;
  *
  * @author camm (camm@flintinteractive.com.au)
  */
-class ProductTest extends EntityTestCase
+class ProductTest extends ProductCatalogueTestCase
 {
     public function testCreate()
     {
