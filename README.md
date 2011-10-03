@@ -1,4 +1,4 @@
-This is the repository from the 2nd Melbourne Symfony2 code jam, hosted on September 6th, 2011 at Flint Interactive. 11 developers attended the evening, and the goal of tonight was to get developers familiar with Doctrine2 ORM for model development.
+This is the repository from the 2nd Melbourne Symfony2 code jam, hosted on September 6th, 2011 at [Flint Interactive](http://www.flintinteractive.com.au). 11 developers attended the evening, and the goal of tonight was to get developers familiar with Doctrine2 ORM for model development.
 
 The night was presented by [Cam Manderson](https://github.com/cammanderson) and [Sam Jarrett](https://github.com/samjarrett) coded as we went on screen.
 
