@@ -10,7 +10,7 @@ use MelbSymfony2\Entity\Category;
  *
  * @author camm (camm@flintinteractive.com.au)
  */
-class CategoryTest extends EntityTestCase
+class CategoryTest extends ProductCatalogueTestCase
 {
     public function testCreate()
     {
@@ -56,13 +56,15 @@ class CategoryTest extends EntityTestCase
         $em->persist($category);
         $em->flush();
 
+        $id = $category->getId();
+
         $repository = $em->getRepository('MelbSymfony2\Entity\Category');
-        $categoryMatch = $repository->findOneById($category->getId());
+        $categoryMatch = $repository->findOneById($id);
 
         $em->remove($categoryMatch);
         $em->flush();
 
-        $categoryMatch = $repository->findOneById($category->getId());
+        $categoryMatch = $repository->findOneById($id);
         $this->assertEmpty($categoryMatch, 'Should not have been able to locate the category again after delete');
     }
 
@@ -82,7 +84,7 @@ class CategoryTest extends EntityTestCase
         $categoryMatch = $repository->findOneById($category->getId());
 
         $categoryMatch->setDescription('Our test category 2');
-        $repository->flush();
+        $em->flush();
 
         $categoryMatch = $repository->findOneById($category->getId());
         $this->assertEquals($categoryMatch->getDescription(), 'Our test category 2', 'Should have the updated description');
