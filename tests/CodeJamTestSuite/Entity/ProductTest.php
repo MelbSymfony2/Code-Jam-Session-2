@@ -61,13 +61,15 @@ class ProductTest extends ProductCatalogueTestCase
         $em->persist($product);
         $em->flush();
 
+        $id = $product->getId();
+
         $repository = $em->getRepository('MelbSymfony2\Entity\Product');
-        $productMatch = $repository->findOneById($product->getId());
+        $productMatch = $repository->findOneById($id);
 
         $em->remove($productMatch);
         $em->flush();
 
-        $productMatch = $repository->findOneById($product->getId());
+        $productMatch = $repository->findOneById($id);
         $this->assertEmpty($productMatch, 'Should not have been able to locate the product again after delete');
     }
 
@@ -88,7 +90,7 @@ class ProductTest extends ProductCatalogueTestCase
         $productMatch = $repository->findOneById($product->getId());
 
         $productMatch->setPrice('13.95');
-        $repository->flush();
+        $em->flush();
 
         $productMatch = $repository->findOneById($product->getId());
         $this->assertEquals($productMatch->getPrice(), '13.95', 'Should have the updated price');

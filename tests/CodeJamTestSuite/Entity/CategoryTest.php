@@ -56,13 +56,15 @@ class CategoryTest extends ProductCatalogueTestCase
         $em->persist($category);
         $em->flush();
 
+        $id = $category->getId();
+
         $repository = $em->getRepository('MelbSymfony2\Entity\Category');
-        $categoryMatch = $repository->findOneById($category->getId());
+        $categoryMatch = $repository->findOneById($id);
 
         $em->remove($categoryMatch);
         $em->flush();
 
-        $categoryMatch = $repository->findOneById($category->getId());
+        $categoryMatch = $repository->findOneById($id);
         $this->assertEmpty($categoryMatch, 'Should not have been able to locate the category again after delete');
     }
 
@@ -82,7 +84,7 @@ class CategoryTest extends ProductCatalogueTestCase
         $categoryMatch = $repository->findOneById($category->getId());
 
         $categoryMatch->setDescription('Our test category 2');
-        $repository->flush();
+        $em->flush();
 
         $categoryMatch = $repository->findOneById($category->getId());
         $this->assertEquals($categoryMatch->getDescription(), 'Our test category 2', 'Should have the updated description');
