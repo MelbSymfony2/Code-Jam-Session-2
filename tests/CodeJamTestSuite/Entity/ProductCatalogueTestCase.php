@@ -14,8 +14,17 @@ class ProductCatalogueTestCase extends EntityTestCase
     {
         parent::setUp();
 
-        // TODO: Add in our schema creates here
+        $this->loadSchemas(array(
+                               'MelbSymfony2\Entity\Category',
+                               'MelbSymfony2\Entity\Product',
+                           ));
 
-        // TODO: Setup any listeners as needed
+        // Add sluggable listener
+        $sluggableListener = new \Gedmo\Sluggable\SluggableListener();
+        $this->addLifecycleEventSubscriber($sluggableListener);
+
+        // Add the nodeset listener
+        $treeListener = new \Gedmo\Tree\TreeListener();
+        $this->addLifecycleEventSubscriber($treeListener);
     }
 }

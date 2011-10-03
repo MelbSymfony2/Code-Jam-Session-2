@@ -4,11 +4,13 @@
  * Date: 3/10/11
  */
 namespace CodeJamTestSuite\DataFixtures\ORM;
+use MelbSymfony2\Entity\Product;
+use MelbSymfony2\Entity\Category;
 /**
  *
  * @author camm (camm@flintinteractive.com.au)
  */
-class ProductCatalogueFixture
+class ProductCatalogueFixture implements \Doctrine\Common\DataFixtures\FixtureInterface
 {
     public function load($em)
     {

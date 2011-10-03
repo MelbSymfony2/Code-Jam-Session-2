@@ -8,7 +8,7 @@ namespace MelbSymfony2\Entity\Repository;
  *
  * @author camm (camm@flintinteractive.com.au)
  */
-class ProductRepository 
+class ProductRepository extends \Doctrine\ORM\EntityRepository
 {
     public function findByPriceRange($min, $max)
     {
