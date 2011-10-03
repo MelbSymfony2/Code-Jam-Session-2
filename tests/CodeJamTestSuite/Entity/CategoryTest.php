@@ -112,7 +112,7 @@ class CategoryTest extends ProductCatalogueTestCase
         $this->assertTrue(method_exists($repository, 'childCount'));
         $this->assertEquals(3, $repository->childCount($repository->findOneByName('Category A')), 'Should have 3 children overall');
         $this->assertEquals(2, $repository->childCount($repository->findOneByName('Category A'), true), 'Should have 2 direct children');
-        $this->assertEquals(1, $repository->childCount($repository->findOneByName('Category D')), 'Should have 1 child');
+        $this->assertEquals(1, $repository->childCount($repository->findOneByName('Category C')), 'Should have 1 child');
     }
 
     public function testRetrieveAllProductsByCategory()
@@ -123,10 +123,10 @@ class CategoryTest extends ProductCatalogueTestCase
 
         $repository = $em->getRepository('MelbSymfony2\Entity\Category');
         $this->assertTrue(method_exists($repository, 'findAllProductsForCategory'), 'Should have defined a function findAllProductsForCategory');
-        $this->assertEquals(4, $repository->findAllProductsForCategory($repository->findOneByName('Category A')), 'Should have 4 products');
-        $this->assertEquals(1, $repository->findAllProductsForCategory($repository->findOneByName('Category B')), 'Should have 1 product');
-        $this->assertEquals(2, $repository->findAllProductsForCategory($repository->findOneByName('Category C')), 'Should have 2 product');
-        $this->assertEquals(2, $repository->findAllProductsForCategory($repository->findOneByName('Category D')), 'Should have 1 product');
+        $this->assertEquals(4, count($repository->findAllProductsForCategory($repository->findOneByName('Category A'))), 'Should have 4 products');
+        $this->assertEquals(1, count($repository->findAllProductsForCategory($repository->findOneByName('Category B'))), 'Should have 1 product');
+        $this->assertEquals(2, count($repository->findAllProductsForCategory($repository->findOneByName('Category C'))), 'Should have 2 product');
+        $this->assertEquals(1, count($repository->findAllProductsForCategory($repository->findOneByName('Category D'))), 'Should have 1 product');
 
     }
 }

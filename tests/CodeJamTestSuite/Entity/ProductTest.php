@@ -151,10 +151,12 @@ class ProductTest extends ProductCatalogueTestCase
         $productB->setPrice('9.95');
         $em->persist($productB);
 
+        $em->flush();
+
         $this->assertEquals(2, count($repository->findByPriceRange('0.00', '100.00')), 'Should have found both products');
         $this->assertEquals(1, count($repository->findByPriceRange('0.00', '10.00')), 'Should have found one product');
         $this->assertEquals(1, count($repository->findByPriceRange('10.00', '100.00')), 'Should have found one product');
-        $this->assertEquals(1, count($repository->findByPriceRange('0.00', '5.00')), 'Should have no products');
+        $this->assertEquals(0, count($repository->findByPriceRange('0.00', '5.00')), 'Should have no products');
 
         $results = $repository->findByPriceRange('0.00', '10.00');
         $this->assertEquals($productB, $results[0], 'Should have found Product B for price range 0 - 10');
