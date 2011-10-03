@@ -5,22 +5,52 @@
  */
 namespace MelbSymfony2\Entity;
 
+use Gedmo\Tree\Node as NodeInterface,
+Gedmo\Mapping\Annotation as gedmo;
+
 /**
- *
+ * @Entity(repositoryClass="MelbSymfony2\Entity\Repository\ProductRepository")
+ * @Table
  * @author camm (camm@flintinteractive.com.au)
  */
 class Product 
 {
+    /**
+     * @Id @Column(type="integer")
+     * @GeneratedValue(strategy="AUTO")
+     * @var int
+     */
     protected $id;
 
+    /**
+     * @Column
+     * @var string
+     */
     protected $name;
 
+    /**
+     * @Column(type="decimal", scale=2)
+     * @var float
+     */
     protected $price;
 
+    /**
+     * @Column
+     * @var string
+     */
     protected $description;
 
+    /**
+     * @ManyToOne(targetEntity="Category", inversedBy="products")
+     * @var Category
+     */
     protected $category;
 
+    /**
+     * @Column(name="slug", type="string", length=128, unique=true)
+     * @gedmo\Slug(fields={"name"})
+     * @var string
+     */
     protected $slug;
 
     public function setCategory($category)
