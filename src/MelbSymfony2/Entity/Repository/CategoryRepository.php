@@ -11,8 +11,19 @@ namespace MelbSymfony2\Entity\Repository;
  */
 class CategoryRepository extends \Gedmo\Tree\Entity\Repository\NestedTreeRepository
 {
-    public function findAllProductsForCategory()
+    public function findAllProductsForCategory($category)
     {
-        return array();
+        $em = $this->getEntityManager();
+
+        // Get the listing of children for this category
+        $categoryIds = array();
+        $categoryIds[] = $category->getId();
+        
+        $matches = $this->children($category);
+        foreach($matches as $match) $categoryIds[] = $match->getId();
+        
+        // Find the related products
+        $query = $em->createQuery("SELECT product FROM MelbSymfony2\Entity\Product product WHERE product.category IN(". implode(' ,', $categoryIds) . ")");
+        return $query->getResult();
     }
 }

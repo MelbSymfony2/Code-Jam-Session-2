@@ -29,7 +29,7 @@ class Product
     protected $name;
 
     /**
-     * @Column(type="decimal", precision=2, scale=1)
+     * @Column(type="decimal", scale=2)
      * @var float
      */
     protected $price;
